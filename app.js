@@ -13,7 +13,9 @@ const Listing = require("./models/listing.js");
 const path = require("path");
 const methodOverride = require("method-override");
 const ejsmate = require("ejs-mate");
-const dburl=process.env.ATLASDB_URL;
+const dburl= process.env.NODE_ENV === "production"
+  ? process.env.ATLASDB_URL
+  : "mongodb://127.0.0.1:27017/wanderlust";
 const ExpressError = require("./utils/ExpresssError.js");
 const session = require("express-session");
 const MongoStore = require('connect-mongo');
