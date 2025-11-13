@@ -1,5 +1,5 @@
 const User = require("../models/user");
-const { cloudinary } = require('../cloudConfig.js'); // ADD this line
+const { cloudinary } = require('../cloudconfig.js'); // ADD this line
 
 
 
