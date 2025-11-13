@@ -1,0 +1,95 @@
+<% layout("layouts/boilerplate") %>
+
+<div class="container min-vh-75 d-flex justify-content-center align-items-center py-4">
+  <div class="w-100" style="max-width: 420px;">
+    <div class="border rounded-4 shadow-sm p-4 bg-white">
+      <h2 class="text-center mb-4 text-success fw-semibold">Sign Up</h2>
+
+      <form action="/signup" method="POST" class="needs-validation" novalidate enctype="multipart/form-data">
+
+       <!-- ✅ Profile Image Upload -->
+        <div class="mb-4 text-center">
+          <label for="profileImage" class="form-label fw-semibold">Profile Picture</label>
+          <div class="d-flex flex-column align-items-center">
+            <img id="previewImg" 
+                 src="https://cdn-icons-png.flaticon.com/512/847/847969.png"
+                 alt="Profile Preview"
+                 class="rounded-circle mb-2 shadow-sm"
+                 style="width: 100px; height: 100px; object-fit: cover; border: 2px solid #ddd;">
+            
+            <input type="file" id="profileImage" name="profileImage" 
+                   accept="image/*" class="form-control w-75 mt-2"
+                   onchange="previewFile()">
+            <div class="form-text text-muted">Optional — you can add later too.</div>
+          </div>
+        </div>
+        
+        <!-- Username -->
+        <div class="mb-3">
+          <label for="username" class="form-label fw-medium">Username</label>
+          <input 
+            type="text" 
+            id="username" 
+            name="username" 
+            class="form-control" 
+            placeholder="Enter your username" 
+            required>
+          <div class="valid-feedback">Looks good!</div>
+        </div>
+
+        <!-- Email -->
+        <div class="mb-3">
+          <label for="email" class="form-label fw-medium">Email</label>
+          <input 
+            type="email" 
+            id="email" 
+            name="email" 
+            class="form-control" 
+            placeholder="Enter your email"
+            required>
+        </div>
+
+        <!-- Password -->
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <div class="input-group">
+            <input type="password" id="password" name="password" class="form-control"
+                   placeholder="Enter a strong password" required minlength="6">
+            <button type="button" class="btn  btn-outline-secondary" id="togglePassword"><i class="fa-solid fa-unlock"></i></button>
+            <div class="invalid-feedback">Password must be at least 6 characters!</div>
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="d-grid mt-4">
+          <button type="submit" class="btn btn-success btn-lg">Sign Up</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<!-- ✅ JS for Image Preview + Password Toggle -->
+<script>
+  document.getElementById('togglePassword').addEventListener('click', function () {
+    const passwordField = document.getElementById('password');
+    if (passwordField.type === 'password') {
+      passwordField.type = 'text';
+      this.innerHTML = '<i class="fa-solid fa-lock"></i>';
+    } else {
+      passwordField.type = 'password';
+      this.innerHTML = '<i class="fa-solid fa-unlock"></i>';
+    }
+  });
+
+  function previewFile() {
+    const preview = document.getElementById('previewImg');
+    const file = document.getElementById('profileImage').files[0];
+    const reader = new FileReader();
+    reader.addEventListener("load", function () {
+      preview.src = reader.result;
+    }, false);
+    if (file) reader.readAsDataURL(file);
+  }
+</script>

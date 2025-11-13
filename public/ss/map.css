@@ -1,0 +1,6 @@
+/* public/css/map.css */
+#map { 
+  width: 100%;
+  height: 450px; /* change height as needed */
+  border-radius: 8px;
+}

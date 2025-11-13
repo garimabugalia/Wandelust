@@ -1,0 +1,44 @@
+<% layout("layouts/boilerplate") %>
+
+<div class="container min-vh-75 d-flex justify-content-center align-items-center py-4">
+  <div class="w-100" style="max-width: 420px;">
+    <div class="border rounded-4 shadow-sm p-4 bg-white">
+      <h2 class="text-center mb-4 text-success fw-semibold">Login</h2>
+
+      <form action="/login" method="POST" class="needs-validation" novalidate>
+        <!-- Username -->
+        <div class="mb-3">
+          <label for="username" class="form-label fw-medium">Username</label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            class="form-control"
+            placeholder="Enter your username"
+            required
+          >
+          <div class="invalid-feedback">Please enter your username.</div>
+        </div>
+
+        <!-- Password -->
+        <div class="mb-3">
+          <label for="password" class="form-label fw-medium">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            class="form-control"
+            placeholder="Enter your password"
+            required
+          >
+          <div class="invalid-feedback">Please enter your password.</div>
+        </div>
+
+        <!-- Login Button -->
+        <div class="d-grid mt-4">
+          <button type="submit" class="btn btn-success btn-lg">Login</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
