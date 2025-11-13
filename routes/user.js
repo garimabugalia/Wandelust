@@ -6,7 +6,7 @@ const passport = require("passport");
 const multer = require("multer");
 const{saveredirecturl} = require("../middleware.js");
 const usercontroller = require("../controllers/users.js");
-const {userStorage } = require('../cloudConfig.js');
+const {userStorage } = require('../cloudconfig.js');
 const upload = multer({ storage: userStorage });
 
 
