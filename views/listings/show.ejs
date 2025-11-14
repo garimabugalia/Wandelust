@@ -29,12 +29,46 @@
             <h4 class="text-success mb-3">&#8377; <%= listing.price %>
             </h4>
             <p class="text-muted"><b>Location:</b>
-              <%= listing.location %>
-            </p>
+              <%= listing.location %></p>
             <p><b>Country:</b>
               <%= listing.country %>
             </p>
+            <p><b>Contact:</b> 797646xxxx</p>
+          <% if(curruser && (!listing.owner || !curruser._id.equals(listing.owner._id))) { %>
+            <button type="button" class="btn btn-success px-4 mt-3" data-bs-toggle="modal" data-bs-target="#bookModal">
+              💳 Book Now
+            </button>
+          <% } %>
+  <!-- Booking Modal -->
+    <div class="modal fade" id="bookModal" tabindex="-1" aria-labelledby="bookModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+      
+      <div class="modal-header">
+        <h5 class="modal-title" id="bookModalLabel">Scan & Pay 💳</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body text-center">
+        <img src="<%= listing.image.url %>" alt="<%= listing.title %>" class="img-fluid rounded mb-3" style="height:200px; object-fit:cover;">
+        <h5 class="mb-3"><%= listing.title %></h5>
+        <h6 class="text-success">&#8377; <%= listing.price.toLocaleString("en-IN") %></h6>
+      </div>
+
+      <div class="modal-footer justify-content-center">
+        <form action="/profile/bookings/<%= listing._id %>" method="POST">
+      <button type="submit" class="btn btn-primary px-4">Confirm Now ✅</button>
+</form>
+      </div>
+
+        </div>
+      </div>
+    </div>
+
           </div>
+
+
+
 
           <!-- Buttons in single line -->
         <% if(curruser && listing.owner&& curruser._id.equals(listing.owner._id)){ %>
@@ -53,7 +87,8 @@
       </div>
     </div>
     
-    <div class="col-md-5 offset-3">
+   <div class="col-12 col-md-6 offset-md-3 review-container">
+
       <hr />
       <% if(curruser) { %>
       <h4>Leave a review</h4>
@@ -86,17 +121,14 @@
       <hr/>
       <% } %>
      
-      <!-- 🌍 Map Section -->
-            <div class="container my-4">
-  <div id="map" style="height: 400px; width: 100%; border-radius: 10px;"></div>
-</div>
-
 
 <!-- Reviews Section -->
       <p><b>All Reviews</b></p>
       <div  class="row">
        <% for(rev of listing.review) { %>
-         <div class="card  col-5 ms-3 mb-3">
+      <div class="col-12 col-md-6 offset-md-3 review-container">
+
+
           <div class="card-body">
             <h5 class="card-title"> <%= rev.author.username %></h5>
               <p class="starability-result card-text" data-rating="<%= rev.rating %>">
@@ -110,7 +142,11 @@
          </div>
         <% } %>
       </div>
-
+    </br></br>
+     <!-- 🌍 Map Section -->
+            <div class="container my-4">
+  <div id="map" style="height: 400px; width: 100%; border-radius: 10px;"></div>
+</div>
 
       
    

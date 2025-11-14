@@ -31,7 +31,7 @@ const user = require("./models/user.js");
 const User = require("./routes/user.js");
 const listing = require("./routes/listing.js");
 const reviews = require("./routes/reviews.js");
-
+const profileRoutes = require("./routes/profile.js");
 
 
   
@@ -131,6 +131,7 @@ app.use((req,res,next)=>{
 app.use("/listings", listing);
 app.use("/listings/:id/reviews", reviews);
 app.use("/",User);
+app.use("/profile", profileRoutes);
 
 
 app.get("/testListing", async (req, res) => {

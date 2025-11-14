@@ -407,3 +407,299 @@ body {
         }
 
 /* End of navbar styles */
+
+
+
+/* ========================================= */
+/* FIX: MY PROPERTIES CARD WIDTH OVERRIDE    */
+/* ========================================= */
+
+/* .my-properties-card is a new class we will apply to the card wrapper */
+.my-properties-card {
+    /* Ensure the card container doesn't force unnecessary width limits */
+    flex: none !important; 
+    max-width: 100% !important; 
+}
+
+/* Ensure the card itself respects the column boundaries */
+.my-properties-card .card {
+    /* Reset general listing card flex properties to follow Bootstrap column constraints */
+    flex: 1 1 100% !important; 
+    max-width: 100% !important;
+    margin: 0 !important; /* Remove any conflicting margin */
+}
+
+/* Fix for the card image size which might be fixed by general rules */
+.my-properties-card .card img {
+    height: 15rem !important; /* Respecting the EJS set height */
+    object-fit: cover;
+}
+/* End of MY PROPERTIES CARD WIDTH OVERRIDE */
+
+
+
+/* PROFILE PAGE MODERN STYLING (Revised)   */
+/* ========================================= */
+
+@keyframes background-gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Applying subtle, modern background animation */
+body {
+    background: linear-gradient(135deg, #f7f7f7, #f0f0f0, #e6e6e6);
+    background-size: 200% 200%;
+    animation: background-gradient 15s ease infinite;
+}
+
+.profile-page-modern {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+/* Modern Card Style */
+.modern-profile-card {
+    max-width: 900px;
+    margin: auto;
+    border-radius: 20px !important;
+    background-color: #ffffff;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* Slightly darker shadow for contrast */
+}
+
+/* Smaller Profile Image Size (90px) */
+.profile-img-small-modern {
+    /* Reduced from 140px to 90px */
+    width: 90px; 
+    height: 90px;
+    object-fit: cover;
+    /* Red border for Airbnb branding */
+    border-color: #ff385c !important; 
+    transition: transform 0.3s ease;
+}
+
+.profile-img-small-modern:hover {
+    transform: scale(1.05);
+}
+
+/* Link Buttons Style */
+.profile-link-btn {
+    font-weight: 600;
+    padding: 15px 20px;
+    border-radius: 12px !important;
+    transition: all 0.3s ease;
+}
+
+.profile-link-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Ensuring Primary Button is Airbnb Red */
+.btn-primary {
+    background-color: #ff385c !important; /* Airbnb Red */
+    border-color: #ff385c !important;
+}
+
+.btn-primary:hover {
+    background-color: #d90f62 !important;
+    border-color: #d90f62 !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .profile-img-small-modern {
+        width: 70px; /* Even smaller on mobile */
+        height: 70px;
+    }
+    .modern-profile-card {
+        padding: 20px !important;
+    }
+}
+
+/* ========================================= */
+/* NEW FEATURE: BOOK NOW HOVER OVERLAY       */
+/* ========================================= */
+
+/* 1. Initial State: Hide the 'Book Now' text/overlay */
+.card .card-img-overlay::after {
+    content: "BOOK NOW"; /* Text to display */
+    
+    /* Centering and Styling */
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    color: white;
+    font-size: 1.6rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    
+    /* Dark semi-transparent background to cover the image slightly */
+    background-color: rgba(0, 0, 0, 0.4); 
+    
+    /* Hidden by default */
+    opacity: 0; 
+    transition: opacity 0.3s ease;
+    z-index: 5; /* Z-index above the image */
+}
+
+/* 2. Location Hiding: Hide the existing location text on hover */
+.card:hover .card-img-overlay h5 {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* 3. Hover Effect: Show the 'Book Now' overlay */
+.card:hover .card-img-overlay::after {
+    opacity: 1; /* Show the overlay */
+}
+
+/* Optional: Slight zoom on image when hovering the card */
+.card:hover img {
+    transform: scale(1.03); 
+    transition: transform 0.4s ease-in-out;
+}
+
+/* Reset the original card hover rule if it causes issues with the zoom */
+.card:hover {
+    /* Resetting the scale(1.05) rule if it exists and conflicts */
+    transform: none; 
+}
+/* BOOKED PROPERTIES PREMIUM STYLING (WIDTH FIX) */
+/* ========================================= */
+
+/* Container Width: Ensure the Bootstrap container is maximized for the wide cards */
+@media (min-width: 1400px) {
+    /* Set container to be very wide on extra-large screens (Bootstrap's XXL breakpoint) */
+    .container {
+        max-width: 1600px !important;
+    }
+}
+
+.premium-booking-card {
+    /* ... (rest of the premium styling remains the same) ... */
+    border-radius: 12px !important;
+    background-color: #ffffff;
+    border: 1px solid #ebebeb !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Image Styling for the wider card (col-lg-6) */
+.premium-booking-card img {
+    /* Height reduced slightly to 16rem so it doesn't look too tall on wider cards */
+    height: 16rem; 
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+
+/* ========================================= */
+/* BOOKED PROPERTIES PREMIUM STYLING */
+/* ========================================= */
+
+/* --- Container Width --- */
+@media (min-width: 1400px) {
+    .container {
+        max-width: 1600px !important;
+    }
+}
+
+/* --- Card Styling --- */
+.booked-card-style {
+    flex: none !important; 
+    max-width: 100% !important;
+    transition: all 0.3s ease-in-out;
+    border-radius: 12px !important;
+    background-color: #ffffff;
+    border: 1px solid #ebebeb !important;
+}
+
+.booked-card-style img {
+    height: 16rem;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.booked-card-style:hover img {
+    transform: scale(1.05);
+}
+
+.booked-card-style:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* --- Glass Card Effect --- */
+.bg-glass {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(5px);
+}
+
+/* --- Text & Price --- */
+.text-gradient {
+    color: #222222;
+    font-weight: 800;
+}
+
+.text-success {
+    color: #008489 !important;
+}
+
+/* --- Buttons Styling --- */
+.btn-view {
+    background-color: #ff385c;
+    color: #fff;
+    border: none;
+    font-weight: 600;
+    padding: 0.5rem 1.5rem;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-view:hover {
+    background-color: #d90f62;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.btn-cancel {
+    background-color: #6c757d;
+    color: #fff;
+    border: none;
+    font-weight: 600;
+    padding: 0.5rem 1.5rem;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-cancel:hover {
+    background-color: #5a6268;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* --- Buttons Container --- */
+.booking-btns {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    flex-wrap: wrap; /* allow wrapping on extreme small screens */
+    margin-top: 1rem;
+}
+
+.booking-btns form {
+    display: inline-flex; /* keep cancel button inline with view button */
+    justify-content: center;
+    width: auto;
+}
+
+/* Optional: Buttons adjust on very small screens */
+@media (max-width: 400px) {
+    .btn-view, .btn-cancel {
+        flex: 1 1 45%; /* both buttons ~45% width */
+    }
+}

@@ -195,3 +195,81 @@
   -webkit-transition: background-position .7s;
   transition: background-position .7s;
 }
+
+
+/* ============================
+   Review Section Responsive UI
+   ============================ */
+
+/* Center the whole review form area */
+.review-container {
+  max-width: 600px;
+  margin: auto;
+  padding: 0 15px;
+}
+
+/* Review cards in a grid */
+.review-grid {
+  display: grid;
+  gap: 15px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+/* Individual review card */
+.review-card {
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  padding: 15px;
+  background: white;
+}
+
+/* Card title and text */
+.review-card h5 {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.review-card p {
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* Delete button */
+.review-card form button {
+  width: 100%;
+  padding: 6px 0;
+}
+
+/* ============================
+   Responsive Form Styling
+   ============================ */
+@media (max-width: 576px) {
+
+  .review-container {
+    padding: 10px;
+  }
+
+  form.needs-validation {
+    padding: 0 10px;
+  }
+
+  .starability-slot {
+    transform: scale(0.9);
+  }
+
+  textarea {
+    font-size: 14px;
+  }
+
+  .btn-outline-dark, 
+  .btn-dark {
+    width: 100%;
+  }
+}
+
+/* Adjust star rating on very small screens */
+@media (max-width: 420px) {
+  .starability-slot {
+    transform: scale(0.8);
+  }
+}
